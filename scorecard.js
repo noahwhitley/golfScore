@@ -1,25 +1,31 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Retrieve the selected course data from localStorage
-    const selectedCourseData = JSON.parse(localStorage.getItem('selectedCourseData'));
+    const selectedCourseId = localStorage.getItem('selectedCourseId');
 
-    if (!selectedCourseData) {
+    if (!selectedCourseId) {
         alert('Please select a course first.');
         // Redirect to the course selection page (index.html)
         window.location.href = 'index.html';
         return;
     }
-    
-    // Display the course information
-    const courseInfo = document.getElementById('course-info');
-    courseInfo.innerHTML = `
-        <h2>${selectedCourseData.name}</h2>
-        <p>${selectedCourseData.description}</p>
-        <img src="${selectedCourseData.thumbnail}" alt="${selectedCourseData.name}">
-    `;
+
+    // Fetch course data from the API based on the selected course ID
+    const courseDataUrl = `https://exquisite-pastelito-9d4dd1.netlify.app/golfapi/course${selectedCourseId}.json`;
+
+    fetch(courseDataUrl)
+        .then((response) => response.json())
+        .then((selectedCourseData) => {
+            // Display the course name
+            const courseInfo = document.getElementById('course-info');
+            courseInfo.innerHTML = `<h2>${selectedCourseData.name}</h2>`;
+
+            // Proceed to create the scorecard table and handle other functionality as needed.
+        })
+        .catch((error) => {
+            console.error('Error loading course data:', error);
+        });
 
     // Create the scorecard table based on the number of holes
     const scorecardTable = document.getElementById('scorecard-table');
-    const numHoles = selectedCourseData.holes.length;
 
     // ... code to generate the table headers ...
 
