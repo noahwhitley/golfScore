@@ -17,32 +17,66 @@ const courses = [
         imageUrl: "img/spanish.jpg",
         description: "Play at Spanish Oaks in Spanish Fork, UT",
     },
+    
 ];
 
 const courseSelection = document.getElementById('options-container');
+const teeBoxSelect = document.getElementById('tee-box-select');
 
 courses.forEach((course) => {
     const courseDiv = document.createElement('div');
     courseDiv.className = 'course';
 
-    // Create the course name element with larger font
+    // Course name
     const courseName = document.createElement('h3');
     courseName.className = 'course-name';
     courseName.textContent = course.name;
     courseDiv.appendChild(courseName);
 
-    // Create the course description element
+    // Course description
     const courseDescription = document.createElement('p');
     courseDescription.className = 'course-description';
     courseDescription.textContent = course.description;
     courseDiv.appendChild(courseDescription);
 
-    // Add an image for the course
+    // Course image
     const courseImage = document.createElement('img');
     courseImage.src = course.imageUrl;
     courseImage.alt = course.name;
     courseDiv.appendChild(courseImage);
 
-    // Append the course div to the course selection container
+    // Add course ID as a data attribute to the course div
+    courseDiv.dataset.courseId = course.id;
+
+    courseDiv.addEventListener('click', (event) => {
+        const courseId = event.currentTarget.dataset.courseId;
+        // Store the selected courseId and data in localStorage
+        const selectedCourse = courses.find((course) => course.id === courseId);
+        localStorage.setItem('selectedCourseId', courseId);
+        localStorage.setItem('selectedCourseData', JSON.stringify(selectedCourse));
+        window.location.href = 'scorecard.html';
+    });
+
     courseSelection.appendChild(courseDiv);
 });
+
+function loadTeeBoxOptions(courseId) {
+    // Replace the following URL with the actual API endpoint to get tee box data for the selected course
+    const teeBoxDataUrl = `https://exquisite-pastelito-9d4dd1.netlify.app/golfapi/course${courseId}.json`;
+
+    fetch(teeBoxDataUrl)
+        .then((response) => response.json())
+        .then((teeBoxes) => {
+            let teeBoxSelectHtml = '';
+            teeBoxes.forEach(function (teeBox, index) {
+                teeBoxSelectHtml += `<option value="${index}">${teeBox.teeType.toUpperCase()}, ${
+                    teeBox.totalYards
+                } yards</option>`;
+            });
+
+            teeBoxSelect.innerHTML = teeBoxSelectHtml;
+        })
+        .catch((error) => {
+            console.error('Error loading tee box data:', error);
+        });
+}

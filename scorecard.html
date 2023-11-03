@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golf Scorecard</title>
+    <link rel="stylesheet" href="scorecard.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Golf Scorecard</h1>
+        </div>
+        <div class="course-info" id="course-info">
+            <!-- Display the selected course information here -->
+        </div>
+        <table id="scorecard-table">
+            <!-- Create the table dynamically using JavaScript -->
+        </table>
+        <div class="players">
+            <h2>Players</h2>
+            <input type="text" id="player-name" placeholder="Player Name">
+            <button id="add-player">Add Player</button>
+            <ul id="player-list">
+                <!-- Display the list of players here -->
+            </ul>
+            <button id="calculate-score">Calculate Score</button>
+        </div>
+    </div>
+    <script src="scorecard.js"></script>
+</body>
+</html>
