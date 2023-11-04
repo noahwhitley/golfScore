@@ -1,4 +1,3 @@
-/* Add this CSS to style the scorecard.html page */
 body {
     font-family: Arial, sans-serif;
     background-color: #f2f2f2;
@@ -7,26 +6,49 @@ body {
 }
 
 .container {
+    display: flex;
+    flex-direction: column;
     max-width: 100%;
     margin: 0 auto;
     padding: 20px;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    justify-content: space-between;
 }
 
 .header {
-    text-align: center;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
     margin-bottom: 30px;
+    flex: 1;
 }
 
 .header h1 {
     font-size: 2rem;
     color: #333;
+    margin: 0;
+}
+
+.home-button {
+    padding: 5px 10px;
+    background-color: #761c1c;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.home-button:hover {
+    background-color: #c83b3b;
 }
 
 .course-info {
     padding: 10px;
+    flex: 1;
 }
 
 .course-info h2 {
@@ -41,6 +63,11 @@ body {
 }
 
 .scorecard {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     margin-top: 20px;
     padding: 20px;
     border: 1px solid #ccc;
@@ -52,23 +79,6 @@ body {
 .scorecard h2 {
     font-size: 1.5rem;
     color: #333;
-}
-
-.home-button {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 5px 10px;
-    background-color: #761c1c;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.home-button:hover {
-    background-color: #c83b3b;
 }
 
 table {
@@ -85,7 +95,14 @@ th, td {
     text-align: center;
 }
 
+.plTitle {
+    padding-right: 30px;
+}
+
 .players {
+    display: inline;
+    flex-direction: column;
+    align-items: flex-start;
     margin-top: 20px;
     padding: 20px;
     border: 1px solid #ccc;
@@ -97,48 +114,83 @@ th, td {
 .players h2 {
     font-size: 1.5rem;
     color: #333;
+    text-align: center;
 }
 
 #player-name {
-    width: 60%;
+    width: 10%;
     padding: 5px;
+    margin-right: 10px;
+    display: inline;
 }
 
 #add-player {
-    padding: 5px 10px;
+    display: flex;
+    align-items: center;
     background-color: #333;
     color: #fff;
-    border: none;
     border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+    margin-bottom: 10px;
 }
 
 #add-player:hover {
     background-color: #555;
 }
 
-ul {
-    list-style: none;
-    padding: 0;
+#player-list {
+    display: flex;
+    flex-wrap: wrap;
+    text-decoration: none;
+    
 }
 
-li {
-    font-size: 1rem;
+#player-list > div {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    background-color: #f3f3f3; 
+    padding: 5px;
+    border-radius: 5px;
     margin-bottom: 5px;
 }
 
-#calculate-score {
-    padding: 5px 10px;
-    background-color: #333;
+input[type="number"] {
+    width: 30px;
+}
+
+button.remove-button {
+    background-color: #761c1c;
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    padding: 5px 10px;
+    margin: 0 10px;
+}
+
+button.remove-button:hover {
+    background-color: #c83b3b;
+}
+
+#play {
+    display: flex;
+    align-items: center;
+}
+
+#calculate-score {
+    display: flex;
+    padding: 5px 10px;
+    background-color: #0e5c2a;
+    font-size: 20px;
+    color: #fff;
+    border: none;
+    border-radius: 100px;
+    transition: background-color 0.3s;
+    margin: auto;
     margin-top: 10px;
 }
 
 #calculate-score:hover {
-    background-color: #555;
+    background-color: #70b77c;
 }

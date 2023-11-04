@@ -5,26 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Golf Scorecard</title>
     <link rel="stylesheet" href="scorecard.css">
+    <script src="https://kit.fontawesome.com/32e3b87006.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="container">
         <div class="header">
+            <a href="index.html" class="home-button"><i class="fa-solid fa-house"></i></a>
             <h1>Golf Scorecard</h1>
         </div>
-        <div class="course-info" id="course-info">
-            <!-- Display the selected course information here -->
-        </div>
-        <table id="scorecard-table">
-            <!-- Create the table dynamically using JavaScript -->
-        </table>
         <div class="players">
             <h2>Players</h2>
             <input type="text" id="player-name" placeholder="Player Name">
             <button id="add-player">Add Player</button>
-            <ul id="player-list">
-                <!-- Display the list of players here -->
-            </ul>
+            <div id="player-list">
+                <!-- players added here -->
+            </div>
             <button id="calculate-score">Calculate Score</button>
+        </div>
+        <div class="scorecard">
+            <div id="course-info">
+                <!-- display course info here -->
+            </div>
+            <table id="scorecard-table">
+                <!-- create table with js -->
+            </table>
         </div>
     </div>
     <script src="scorecard.js"></script>

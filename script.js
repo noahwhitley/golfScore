@@ -39,18 +39,15 @@ courses.forEach((course) => {
     courseDescription.textContent = course.description;
     courseDiv.appendChild(courseDescription);
 
-    // Course image
     const courseImage = document.createElement('img');
     courseImage.src = course.imageUrl;
     courseImage.alt = course.name;
     courseDiv.appendChild(courseImage);
 
-    // Add course ID as a data attribute to the course div
     courseDiv.dataset.courseId = course.id;
 
     courseDiv.addEventListener('click', (event) => {
         const courseId = event.currentTarget.dataset.courseId;
-        // Store the selected courseId and data in localStorage
         const selectedCourse = courses.find((course) => course.id === courseId);
         localStorage.setItem('selectedCourseId', courseId);
         localStorage.setItem('selectedCourseData', JSON.stringify(selectedCourse));
@@ -61,7 +58,6 @@ courses.forEach((course) => {
 });
 
 function loadTeeBoxOptions(courseId) {
-    // Replace the following URL with the actual API endpoint to get tee box data for the selected course
     const teeBoxDataUrl = `https://exquisite-pastelito-9d4dd1.netlify.app/golfapi/course${courseId}.json`;
 
     fetch(teeBoxDataUrl)
